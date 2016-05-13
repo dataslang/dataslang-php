@@ -16,6 +16,7 @@ class DataslangApi {
 }
 
   public function validate($xml, $xsd){
+    $b = false;
     $response = $this->client->request('POST', '/validate', [
         'form_params' => [
             'field_name' => 'abc',
@@ -25,7 +26,7 @@ class DataslangApi {
             ]
         ]
     ]);
-  
+  return $b;
   }
 
 }
