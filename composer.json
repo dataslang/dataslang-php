@@ -1,5 +1,6 @@
- {
-   "require": {
-      "guzzlehttp/guzzle": "~6.0"
-   }
+{
+	"name" : "dataslang/dataslang-php",
+   	"require": {
+		"guzzlehttp/guzzle": "~6.0"
+	}
 }
