@@ -1,7 +1,5 @@
 <?php
 
-require 'vendor/autoload.php';
-
 use GuzzleHttp\Client;
 
 class DataslangApi {
@@ -13,8 +11,8 @@ class DataslangApi {
 	private $timeout = 2.0;
   
 	public function __construct(){
-		$this->initSettings();		
-    	$this->client = new Client($this->settings);
+		$this->initSettings();
+		$this->client = new Client($this->settings);
 	}
 
 	public function validate($xml, $xsd){
