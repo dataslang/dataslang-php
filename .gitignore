@@ -1,0 +1,6 @@
+/vendor
+.buildpath
+composer.lock
+.project
+.settings/org.eclipse.wst.common.project.facet.core.xml
+.settings/org.eclipse.php.core.prefs
