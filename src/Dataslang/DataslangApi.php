@@ -1,5 +1,7 @@
 <?php
 
+namespace Dataslang;
+
 use GuzzleHttp\Client;
 
 class DataslangApi {
