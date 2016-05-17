@@ -21,7 +21,6 @@ class DataslangApi {
 		$result = null;
 		
 		try {
-		
 
 			//     	$response = $this->client->request('POST', '/validate', [
 			//         	'form_params' => [
