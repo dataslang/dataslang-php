@@ -78,18 +78,34 @@ class DataslangApi {
   		return $result;
   	}
   
+  	/**
+  	 * 
+  	 * @param int $timeout
+  	 */
 	public function setTimeout($timeout){
 		$this->timeout = $timeout;
 	}
 	
+	/**
+	 * 
+	 * @return int $timeout
+	 */
 	public function getTimeout(){
 		return $this->timeout;
 	}
 	
+	/**
+	 * 
+	 * @return string BASE_URI
+	 */
 	public function getBaseUri(){
 		return self::BASE_URI;
 	}
 	
+	/**
+	 * 
+	 * @return \GuzzleHttp\Client
+	 */
 	private function getClient(){
 		$settings = array();
 		$settings['base_uri'] = $this->getBaseUri();
