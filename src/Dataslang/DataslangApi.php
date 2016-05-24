@@ -6,7 +6,7 @@ use GuzzleHttp\Client;
 
 class DataslangApi {
 	
-	const BASE_URI = 'http://api.dataslang';
+	const BASE_URI = 'http://api.dataslang.com';
 	
 	private $client = null;
 	private $settings = array();
@@ -28,13 +28,13 @@ class DataslangApi {
 			$result = $response->getBody();
 			
 		} catch (\Exception $e) {
-
+			
 		}
 		
 		return $result;
   	}
   	
-  	public function transformToXml($xml){
+  	public function transformToXml($xml, $xsl, $dest_path){
   		$result = null;
   		
   		try {
@@ -42,7 +42,9 @@ class DataslangApi {
   			$client = $this->getClient();
   			$response = $client->request('POST', '/xml/transform/xml', [
   				'form_params' => [
-  					'xml' => urlencode($xml)
+  					'xml' => urlencode($xml),
+  					'xsl' => urlencode($xsl),
+  					'dest_path' => urlencode($dest_path)
   				]
   			]);
   				
@@ -72,40 +74,24 @@ class DataslangApi {
   			$result = $response->getBody();
   		
   		} catch (\Exception $e) {
-
+			
   		}
   		
   		return $result;
   	}
   
-  	/**
-  	 * 
-  	 * @param int $timeout
-  	 */
 	public function setTimeout($timeout){
 		$this->timeout = $timeout;
 	}
 	
-	/**
-	 * 
-	 * @return int $timeout
-	 */
 	public function getTimeout(){
 		return $this->timeout;
 	}
 	
-	/**
-	 * 
-	 * @return string BASE_URI
-	 */
 	public function getBaseUri(){
 		return self::BASE_URI;
 	}
 	
-	/**
-	 * 
-	 * @return \GuzzleHttp\Client
-	 */
 	private function getClient(){
 		$settings = array();
 		$settings['base_uri'] = $this->getBaseUri();
