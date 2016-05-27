@@ -21,16 +21,17 @@ class DataslangApi {
 			$response = $client->request('POST', '/xml/validate', [
 				'form_params' => [
 					'xml' => urlencode($xml),
-					'xsd' => urlencode($xsd)
+					'xsd' => urlencode($xsd),
+					'response-type' => urlencode('txt')
 				]
 			]);
 			
 			$result = $response->getBody();
 			
 		} catch (\Exception $e) {
-			
+			$result = $e->getMessage();
 		}
-
+		
 		return $result;
   	}
   	
@@ -44,14 +45,15 @@ class DataslangApi {
   				'form_params' => [
   					'xml' => urlencode($xml),
   					'xsl' => urlencode($xsl),
-  					'dest_path' => urlencode($dest_path)
+  					'dest_path' => urlencode($dest_path),
+  					'response-type' => urlencode('txt')
   				]
   			]);
   				
   			$result = $response->getBody();
   				
   		} catch (\Exception $e) {
-
+  			$result = $e->getMessage();
   		}
   		
   		return $result;
@@ -67,14 +69,15 @@ class DataslangApi {
 				'form_params' => [
 					'xml' => urlencode($xml),
 					'xsl' => urlencode($xsl),
-					'dest_path' => urlencode($dest_path)
+					'dest_path' => urlencode($dest_path),
+					'response-type' => urlencode('txt')
 				]
   			]);
   		
   			$result = $response->getBody();
   		
   		} catch (\Exception $e) {
-			
+  			$result = $e->getMessage();
   		}
   		
   		return $result;
@@ -103,5 +106,4 @@ class DataslangApi {
 		
 		return $this->client;
 	}
-
 }
