@@ -30,7 +30,7 @@ class DataslangApi {
 		} catch (\Exception $e) {
 			
 		}
-		
+
 		return $result;
   	}
   	
@@ -93,11 +93,15 @@ class DataslangApi {
 	}
 	
 	private function getClient(){
-		$settings = array();
-		$settings['base_uri'] = $this->getBaseUri();
-		$settings['timeout'] = $this->getTimeout();
+		if ($this->client === null){
+			$settings = array();
+			$settings['base_uri'] = $this->getBaseUri();
+			$settings['timeout'] = $this->getTimeout();
 		
-		return new Client($settings);
+			$this->client = new Client($settings);
+		}
+		
+		return $this->client;
 	}
 
 }
